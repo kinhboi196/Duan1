@@ -459,10 +459,14 @@
                                             <div>
                                                 <div
                                                     class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-cancel-review">
-                                                    Cancel Review</div>
-                                                <div
-                                                    class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-write-review">
-                                                    Write a review</div>
+                                                    Cancel Review
+                                                </div>
+                                                <?php if (isset($_SESSION['users'])): ?>
+                                                    <div
+                                                        class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-write-review">
+                                                        Write a review
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="reply-comment cancel-review-wrap">
