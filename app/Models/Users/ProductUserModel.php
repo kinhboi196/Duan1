@@ -91,4 +91,21 @@ class ProductUserModel
         return $result;
     }
     
+    public function saveRating(){
+        $productId = $_POST['productId'];
+        $rate = $_POST['rate'];
+        $userid = $_SESSION['users']['id'];
+        $now = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `product_rating`(`product_id`, `user_id`, `rating`, `created_at`) VALUES (:product_rating, :user_id, :rating, :created_at)";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $productId);
+        $stmt->bindParam(':user_id', $userid);
+        $stmt->bindParam(':rating', $rate);
+        $stmt->bindParam(':created_at', $now);
+        return $stmt->execute();
+    }
+
+    public function saveComment(){
+        
+    }
 }

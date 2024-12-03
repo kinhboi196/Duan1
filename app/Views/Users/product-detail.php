@@ -498,7 +498,8 @@
                                                 <?php endforeach; ?>
                                             </div>
                                         </div>
-                                        <form class="form-write-review write-review-wrap">
+                                        <form action="<?= BASE_URL ?>?act=write-comment" method="post" class="form-write-review write-review-wrap">
+                                            <input type="hidden" value="<?= $product->id ?>" name="productId">
                                             <div class="heading">
                                                 <h5>Write a review:</h5>
                                                 <div class="list-rating-check">
@@ -518,7 +519,7 @@
                                                 <fieldset class="box-field">
                                                     <label class="label">Review</label>
                                                     <textarea rows="4" placeholder="Write your comment here"
-                                                        tabindex="2" aria-required="true" required=""></textarea>
+                                                        tabindex="2" aria-required="true" required="" name="comment"></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="button-submit">

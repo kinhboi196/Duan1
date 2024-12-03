@@ -202,6 +202,9 @@ class DashboardController
 
     public function writeComment(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $productModel = new ProductUserModel();
+            $productModel->saveRating();
+            $productModel->saveComment();
         }
     }
 }
