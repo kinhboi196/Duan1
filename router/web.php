@@ -194,6 +194,11 @@ switch($act) {
         $productController->updatePostProduct();
         break;
     }
+    case 'show-product': {
+        $productController = new ProductController();
+        $productController->showProduct();
+        break;
+    }
     case 'comment-product': {
         $commentModel = new CommentRatingController();
         $commentModel->showComment();
@@ -204,11 +209,17 @@ switch($act) {
         $commentModel->showCommentDetail();
         break;
     }
-    case 'show-product': {
-        $productController = new ProductController();
-        $productController->showProduct();
+    case 'comment-reply': {
+        $commentModel = new CommentRatingController();
+        $commentModel->commentReply();
         break;
     }
+    case 'comment-delete': {
+        $commentModel = new CommentRatingController();
+        $commentModel->commentDelete();
+        break;
+    }
+    
     default: {
         // $homeController = new HomeController();
         // $homeController->dashboard();

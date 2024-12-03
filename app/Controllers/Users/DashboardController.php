@@ -207,7 +207,7 @@ class DashboardController
             }
         }
         $ratingProduct = $productModel->getRating($product->id);
-
+        $ratingAvg = $productModel->avgRating($product->id);
 
 
         include 'app/Views/Users/product-detail.php';

@@ -367,7 +367,7 @@
                                         <div class="tab-reviews-heading">
                                             <div class="top">
                                                 <div class="text-center">
-                                                    <h1 class="number fw-6">4.8</h1>
+                                                    <h1 class="number fw-6"><?= $ratingAvg ?></h1>
                                                     <div class="list-star">
                                                         <i class="icon icon-star"></i>
                                                         <i class="icon icon-star"></i>

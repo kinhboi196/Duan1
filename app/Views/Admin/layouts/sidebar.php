@@ -153,7 +153,12 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item">
+                                    <li class="menu-item 
+                                    <?php
+                                       if(isset($_GET['act']) && ($_GET['act'] == 'comment-product' || $_GET['act'] == 'comment-detail')){
+                                           echo 'active';
+                                       }
+                                    ?>">
                                         <a href="<?=BASE_URL?>?role=admin&act=comment-product" class="">
                                             <div class="icon"><i class="icon-pie-chart"></i></div>
                                             <div class="text">Comment</div>
