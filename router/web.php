@@ -194,14 +194,26 @@ switch($act) {
         $productController->updatePostProduct();
         break;
     }
+    case 'comment-product': {
+        $commentModel = new CommentRatingController();
+        $commentModel->showComment();
+        break;
+    }
+    case 'comment-detail': {
+        $commentModel = new CommentRatingController();
+        $commentModel->showCommentDetail();
+        break;
+    }
     case 'show-product': {
         $productController = new ProductController();
         $productController->showProduct();
         break;
     }
     default: {
-        $homeController = new HomeController();
-        $homeController->dashboard();
+        // $homeController = new HomeController();
+        // $homeController->dashboard();
+        $commentRatingController = new CommentRatingController();
+        $commentRatingController->showComment();
         break;
     }
 }

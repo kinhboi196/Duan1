@@ -9,6 +9,7 @@ include 'app/Models/Admin/HomeModel.php';
 include 'app/Models/Admin/UserModel.php';
 include 'app/Models/Admin/CategoryModel.php';
 include 'app/Models/Admin/ProductModel.php';
+include 'app/Models/Admin/CommentRatingModel.php';
 
 // model user
 include 'app/Models/Users/CategoryUserModel.php';
@@ -23,6 +24,7 @@ include 'app/Controllers/Admin/HomeController.php';
 include 'app/Controllers/Admin/UserController.php';
 include 'app/Controllers/Admin/CategoryController.php';
 include 'app/Controllers/Admin/ProductController.php';
+include 'app/Controllers/Admin/CommentRatingController.php';
 
 // Controller User
 include 'app/Controllers/Users/DashboardController.php';
