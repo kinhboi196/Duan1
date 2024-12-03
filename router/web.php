@@ -60,6 +60,11 @@ if($role == "user"){
             $dashBoardController->productDetail();
             break;
         }
+        case 'write-comment': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->writeComment();
+            break;
+        }
     }
 }else{
 

@@ -193,6 +193,15 @@ class DashboardController
         $userModel = new UserModel2();
         $user = $userModel->getCurrentUser();
 
+        $otherProduct = $productModel->getOtherProduct($product->category_id, $product->id);
+
+        $comment = $productModel->getComment($product->id);
+
         include 'app/Views/Users/product-detail.php';
+    }
+
+    public function writeComment(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        }
     }
 }

@@ -114,17 +114,17 @@
                                     <div class="tf-product-info-quantity">
                                         <div class="quantity-title fw-6">Quantity</div>
                                         <div class="wg-quantity">
-                                            <span class="btn-quantity btn-decrease">-</span>
+                                            <span class="btn-quantity btn-decrease-custom">-</span>
                                             <input type="text" class="quantity-product" name="number" value="1">
-                                            <span class="btn-quantity btn-increase">+</span>
+                                            <span class="btn-quantity btn-increase-custom">+</span>
                                         </div>
                                     </div>
                                     <div class="tf-product-info-buy-button">
                                         <form class="">
                                             <a href="javascript:void(0);"
                                                 class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn btn-add-to-cart"><span>Add
-                                                    to cart -&nbsp;</span><span
-                                                    class="tf-qty-price total-price"><?= number_format($product->price_sale) ?>
+                                                    to cart -&nbsp;</span><span class="tf-qty-price total-price">
+                                                    <?= $product->price_sale != null ? number_format($product->price_sale) : number_format($product->price) ?>
                                                     VND</span></a>
                                             <a href="javascript:void(0);"
                                                 class="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action">
@@ -432,7 +432,7 @@
                                         <div class="reply-comment cancel-review-wrap">
                                             <div
                                                 class="d-flex mb_24 gap-20 align-items-center justify-content-between flex-wrap">
-                                                <h5 class="">03 Comments</h5>
+                                                <h5 class=""><?= count($comment) ?> Comments</h5>
                                                 <div class="d-flex align-items-center gap-12">
                                                     <div class="text-caption-1">Sort by:</div>
                                                     <div class="tf-dropdown-sort" data-bs-toggle="dropdown">
@@ -455,66 +455,47 @@
                                                 </div>
                                             </div>
                                             <div class="reply-comment-wrap">
-                                                <div class="reply-comment-item">
-                                                    <div class="user">
-                                                        <div class="image">
-                                                            <img src="assets/Users/images/collections/collection-circle-9.jpg"
-                                                                alt="">
+                                                <?php foreach ($comment as $key => $value): ?>
+                                                    <?php if ($value->parent == null): ?>
+                                                        <div class="reply-comment-item">
+                                                            <div class="user">
+                                                                <div class="image">
+                                                                    <img src="<?= $value->image ?>" alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <h6>
+                                                                        <a href="#" class="link"><?= $value->name ?></a>
+                                                                    </h6>
+                                                                    <div class="day text_black-3">
+                                                                        <?= date("d/m/Y", strtotime($value->created_at)) ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="text_black-3"><?= $value->comment ?></p>
                                                         </div>
-                                                        <div>
-                                                            <h6>
-                                                                <a href="#" class="link">Superb quality apparel that
-                                                                    exceeds expectations</a>
-                                                            </h6>
-                                                            <div class="day text_black-3">1 days ago</div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text_black-3">Great theme - we were looking for a theme
-                                                        with lots of built in features and flexibility and this was
-                                                        perfect. We expected to need to employ a developer to add a few
-                                                        finishing touches. But we actually managed to do everything
-                                                        ourselves. We did have one small query and the support given was
-                                                        swift and helpful.</p>
-                                                </div>
-                                                <div class="reply-comment-item type-reply">
-                                                    <div class="user">
-                                                        <div class="image">
-                                                            <img src="assets/Users/images/collections/collection-circle-10.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>
-                                                                <a href="#" class="link">Reply from Modave</a>
-                                                            </h6>
-                                                            <div class="day text_black-3">1 days ago</div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text_black-3">We love to hear it! Part of what we love
-                                                        most about Modave is how much it empowers store owners like
-                                                        yourself to build a beautiful website without having to hire a
-                                                        developer :) Thank you for this fantastic review!</p>
-                                                </div>
-                                                <div class="reply-comment-item">
-                                                    <div class="user">
-                                                        <div class="image">
-                                                            <img src="assets/Users/images/collections/collection-circle-9.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>
-                                                                <a href="#" class="link">Superb quality apparel that
-                                                                    exceeds expectations</a>
-                                                            </h6>
-                                                            <div class="day text_black-3">1 days ago </div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text_black-3">Great theme - we were looking for a theme
-                                                        with lots of built in features and flexibility and this was
-                                                        perfect. We expected to need to employ a developer to add a few
-                                                        finishing touches. But we actually managed to do everything
-                                                        ourselves. We did have one small query and the support given was
-                                                        swift and helpful.</p>
-                                                </div>
+                                                        <?php foreach ($comment as $key2 => $value2): ?>
+                                                            <?php if ($value2->parent == $value->id): ?>
+                                                                <div class="reply-comment-item type-reply">
+                                                                    <div class="user">
+                                                                        <div class="image">
+                                                                            <img src="<?= $value2->image ?>" alt="">
+                                                                        </div>
+                                                                        <div>
+                                                                            <h6>
+                                                                                <a href="#" class="link">Reply from
+                                                                                    <?= $value2->name ?></a>
+                                                                            </h6>
+                                                                            <div class="day text_black-3">
+                                                                                <?= date("d/m/Y", strtotime($value2->created_at)) ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="text_black-3"><?= $value2->comment ?></p>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                         <form class="form-write-review write-review-wrap">
@@ -535,33 +516,10 @@
                                             </div>
                                             <div class="form-content">
                                                 <fieldset class="box-field">
-                                                    <label class="label">Review Title</label>
-                                                    <input type="text" placeholder="Give your review a title"
-                                                        name="text" tabindex="2" value="" aria-required="true"
-                                                        required="">
-                                                </fieldset>
-                                                <fieldset class="box-field">
                                                     <label class="label">Review</label>
                                                     <textarea rows="4" placeholder="Write your comment here"
                                                         tabindex="2" aria-required="true" required=""></textarea>
                                                 </fieldset>
-                                                <div class="box-field group-2">
-                                                    <fieldset>
-                                                        <input type="text" placeholder="You Name (Public)" name="text"
-                                                            tabindex="2" value="" aria-required="true" required="">
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <input type="email" placeholder="Your email (private)"
-                                                            name="email" tabindex="2" value="" aria-required="true"
-                                                            required="">
-                                                    </fieldset>
-                                                </div>
-                                                <div class="box-check">
-                                                    <input type="checkbox" name="availability" class="tf-check"
-                                                        id="check1">
-                                                    <label class="text_black-3" for="check1">Save my name, email, and
-                                                        website in this browser for the next time I comment.</label>
-                                                </div>
                                             </div>
                                             <div class="button-submit">
                                                 <button class="tf-btn btn-fill animate-hover-btn" type="submit">Submit
@@ -669,6 +627,62 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="flat-spacing-5 pt_0 flat-seller">
+            <div class="container">
+                <div class="flat-title">
+                    <span class="title wow fadeInUp" data-wow-delay="0s">Các sản phẩm liên quan</span>
+                    <p class="sub-title wow fadeInUp" data-wow-delay="0s">Các sản phẩm liên quan đến danh mục</p>
+                </div>
+                <div class="grid-layout loadmore-item wow fadeInUp" data-wow-delay="0s" data-grid="grid-4">
+                    <?php foreach ($otherProduct as $key => $value): ?>
+                        <!-- card product 1 -->
+                        <div class="card-product fl-item">
+                            <div class="card-product-wrapper">
+                                <a href="<?= BASE_URL ?>?act=product-detail&product_id=<?= $value->id ?>"
+                                    class="product-img">
+                                    <img class="lazyload img-product" data-src="<?= $value->image_main ?>"
+                                        src="<?= $value->image_main ?>" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="<?= $value->image_main ?>"
+                                        src="<?= $value->image_main ?>" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <a href="#quick_add" data-bs-toggle="modal"
+                                        class="box-icon bg_white quick-add tf-btn-loading">
+                                        <span class="icon icon-bag"></span>
+                                        <span class="tooltip">Quick Add</span>
+                                    </a>
+                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Add to Wishlist</span>
+                                        <span class="icon icon-delete"></span>
+                                    </a>
+                                    <a href="#quick_view<?= $value->id ?>" data-bs-toggle="modal"
+                                        class="box-icon bg_white quickview tf-btn-loading">
+                                        <span class="icon icon-view"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="<?= BASE_URL ?>?act=product-detail&product_id=<?= $value->id ?>"
+                                    class="title link"><b><?= $value->name ?></b></a>
+                                <?php if ($value->price_sale != null): ?>
+                                    <span class="price"><s><?= number_format($value->price) ?> VND</s> </span>
+                                    <span class="price-sale"><?= number_format($value->price_sale) ?> VND </span>
+                                <?php else: ?>
+                                    <span class="price"><?= number_format($value->price) ?> VND </span>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="tf-pagination-wrap view-more-button text-center">
+                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text">Load
+                            more</span></button>
                 </div>
             </div>
         </section>
@@ -2677,7 +2691,7 @@
     <!-- /modal quick_view -->
 
     <!-- modal find_size -->
-    <div class="modal fade modalDemo tf-product-modal" id="find_size">
+    <!-- <div class="modal fade modalDemo tf-product-modal" id="find_size">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="header">
@@ -2762,7 +2776,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- /modal find_size -->
 
     <!-- Javascript -->
@@ -2776,6 +2790,28 @@
     <script type="text/javascript" src="assets/Users/js/wow.min.js"></script>
     <script type="text/javascript" src="assets/Users/js/multiple-modal.js"></script>
     <script type="text/javascript" src="assets/Users/js/main.js"></script>
+
+    <script>
+        let price = "<?= $product->price_sale != null ? $product->price_sale : $product->price ?>";
+        price = Number(price);
+
+        document.querySelector(".btn-decrease-custom").addEventListener("click", function () {
+            let quantity = document.querySelector(".quantity-product");
+            if (Number(quantity.value) > 0) {
+                quantity.value = Number(quantity.value) - 1;
+                let total = price * Number(quantity.value);
+                document.querySelector('.total-price').textContent = total.toLocaleString() + " VND";
+            }
+        });
+
+        document.querySelector(".btn-increase-custom").addEventListener("click", function () {
+            let quantity = document.querySelector(".quantity-product");
+            quantity.value = Number(quantity.value) + 1;
+            let total = price * Number(quantity.value);
+            document.querySelector('.total-price').textContent = total.toLocaleString() + " VND";
+        });
+
+    </script>
 </body>
 
 
