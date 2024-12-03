@@ -375,48 +375,84 @@
                                                         <i class="icon icon-star"></i>
                                                         <i class="icon icon-star"></i>
                                                     </div>
-                                                    <p>(168 Ratings)</p>
+                                                    <p>(<?= count($ratingProduct) ?> Ratings)</p>
                                                 </div>
+                                                <?php
+                                                $count5 = 0;
+                                                $count4 = 0;
+                                                $count3 = 0;
+                                                $count2 = 0;
+                                                $count1 = 0;
+
+                                                // Kiểm tra nếu có đánh giá
+                                                if (count($ratingProduct) > 0) {
+                                                    foreach ($ratingProduct as $key => $value) {
+                                                        if ($value->rating == '5') {
+                                                            $count5++;
+                                                        } else if ($value->rating == '4') {
+                                                            $count4++;
+                                                        } else if ($value->rating == '3') {
+                                                            $count3++;
+                                                        } else if ($value->rating == '2') {
+                                                            $count2++;
+                                                        } else if ($value->rating == '1') {
+                                                            $count1++;
+                                                        }
+                                                    }
+                                                }
+                                                ?>
                                                 <div class="rating-score">
                                                     <div class="item">
                                                         <div class="number-1 text-caption-1">5</div>
                                                         <i class="icon icon-star"></i>
                                                         <div class="line-bg">
-                                                            <div style="width: 94.67%;"></div>
+                                                            <div
+                                                                style="width: <?= (count($ratingProduct) > 0) ? (($count5 / count($ratingProduct)) * 100) : 0 ?>%;">
+                                                            </div>
                                                         </div>
-                                                        <div class="number-2 text-caption-1">59</div>
+                                                        <div class="number-2 text-caption-1">
+                                                            <?= $count5 ?>
+                                                        </div>
                                                     </div>
                                                     <div class="item">
                                                         <div class="number-1 text-caption-1">4</div>
                                                         <i class="icon icon-star"></i>
                                                         <div class="line-bg">
-                                                            <div style="width: 60%;"></div>
+                                                            <div
+                                                                style="width: <?= (count($ratingProduct) > 0) ? (($count4 / count($ratingProduct)) * 100) : 0 ?>%;">
+                                                            </div>
                                                         </div>
-                                                        <div class="number-2 text-caption-1">46</div>
+                                                        <div class="number-2 text-caption-1"><?= $count4 ?></div>
                                                     </div>
                                                     <div class="item">
                                                         <div class="number-1 text-caption-1">3</div>
                                                         <i class="icon icon-star"></i>
                                                         <div class="line-bg">
-                                                            <div style="width: 0%;"></div>
+                                                            <div
+                                                                style="width: <?= (count($ratingProduct) > 0) ? (($count3 / count($ratingProduct)) * 100) : 0 ?>%;">
+                                                            </div>
                                                         </div>
-                                                        <div class="number-2 text-caption-1">0</div>
+                                                        <div class="number-2 text-caption-1"><?= $count3 ?></div>
                                                     </div>
                                                     <div class="item">
                                                         <div class="number-1 text-caption-1">2</div>
                                                         <i class="icon icon-star"></i>
                                                         <div class="line-bg">
-                                                            <div style="width: 0%;"></div>
+                                                            <div
+                                                                style="width: <?= (count($ratingProduct) > 0) ? (($count3 / count($ratingProduct)) * 100) : 0 ?>%;">
+                                                            </div>
                                                         </div>
-                                                        <div class="number-2 text-caption-1">0</div>
+                                                        <div class="number-2 text-caption-1"><?= $count2 ?></div>
                                                     </div>
                                                     <div class="item">
                                                         <div class="number-1 text-caption-1">1</div>
                                                         <i class="icon icon-star"></i>
                                                         <div class="line-bg">
-                                                            <div style="width: 0%;"></div>
+                                                            <div
+                                                                style="width: <?= (count($ratingProduct) > 0) ? (($count1 / count($ratingProduct)) * 100) : 0 ?>%;">
+                                                            </div>
                                                         </div>
-                                                        <div class="number-2 text-caption-1">0</div>
+                                                        <div class="number-2 text-caption-1"><?= $count1 ?></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -467,6 +503,11 @@
                                                                         <a href="#" class="link"><?= $value->name ?></a>
                                                                     </h6>
                                                                     <div class="day text_black-3">
+                                                                        <?php
+                                                                        if ($value->rating != null) {
+                                                                            echo $value->rating . " <i class='icon icon-star text-warning'></i>";
+                                                                        }
+                                                                        ?>
                                                                         <?= date("d/m/Y", strtotime($value->created_at)) ?>
                                                                     </div>
                                                                 </div>
@@ -486,8 +527,9 @@
                                                                                     <?= $value2->name ?></a>
                                                                             </h6>
                                                                             <div class="day text_black-3">
-                                                                                <?= date("d/m/Y", strtotime($value2->created_at)) ?>
+                                                                                <?= date("d/m/Y", strtotime($value->created_at)) ?>
                                                                             </div>
+
                                                                         </div>
                                                                     </div>
                                                                     <p class="text_black-3"><?= $value2->comment ?></p>
@@ -498,7 +540,8 @@
                                                 <?php endforeach; ?>
                                             </div>
                                         </div>
-                                        <form action="<?= BASE_URL ?>?act=write-comment" method="post" class="form-write-review write-review-wrap">
+                                        <form action="<?= BASE_URL ?>?act=write-comment" method="post"
+                                            class="form-write-review write-review-wrap">
                                             <input type="hidden" value="<?= $product->id ?>" name="productId">
                                             <div class="heading">
                                                 <h5>Write a review:</h5>
@@ -519,7 +562,8 @@
                                                 <fieldset class="box-field">
                                                     <label class="label">Review</label>
                                                     <textarea rows="4" placeholder="Write your comment here"
-                                                        tabindex="2" aria-required="true" required="" name="comment"></textarea>
+                                                        tabindex="2" aria-required="true" required=""
+                                                        name="comment"></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="button-submit">

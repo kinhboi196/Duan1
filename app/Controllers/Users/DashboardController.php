@@ -185,7 +185,8 @@ class DashboardController
         include 'app/Views/Users/shop.php';
     }
 
-    public function productDetail(){
+    public function productDetail()
+    {
         $productModel = new ProductUserModel();
         $product = $productModel->getProductById();
         $productImage = $productModel->getProductImageById();
@@ -197,14 +198,28 @@ class DashboardController
 
         $comment = $productModel->getComment($product->id);
 
+        foreach ($comment as $key => $value) {
+            $rating = $productModel->getCommentByUser($product->id, $value->user_id);
+            if ($rating) {
+                $comment[$key]->rating = $rating->rating;
+            } else {
+                $comment[$key]->rating = null;
+            }
+        }
+        $ratingProduct = $productModel->getRating($product->id);
+
+
+
         include 'app/Views/Users/product-detail.php';
     }
 
-    public function writeComment(){
+    public function writeComment()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $productModel = new ProductUserModel();
             $productModel->saveRating();
             $productModel->saveComment();
         }
+        header("Location:" . BASE_URL . "?act=product-detail&product_id=" . $_POST['productId']);
     }
 }
