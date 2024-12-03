@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2024 at 10:11 AM
+-- Generation Time: Dec 03, 2024 at 10:49 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -113,8 +113,18 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Áo thun '),
-(4, 'Quần Jean');
+(1, 'Giày  Nike'),
+(4, 'Giày Jondan'),
+(6, 'Giày Nike Siêu Cấp'),
+(7, 'Giày  Nike Trắng'),
+(8, 'Giày  Nike Xanh'),
+(9, 'Giày  Nike Đen'),
+(10, 'Giày  Nike Vệt Đen'),
+(11, 'Giày  Nike Jodan'),
+(12, 'Giày  Nike Nâu'),
+(13, 'Giày  Nike JodanXanh'),
+(14, 'Giày  Nike JodanRed'),
+(15, 'Giày  Nike JodanCam');
 
 -- --------------------------------------------------------
 
@@ -178,14 +188,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category_id`, `description`, `price`, `price_sale`, `stock`, `image_main`, `created_at`, `updated_at`) VALUES
-(36, 'giay 1', 1, 'Giày số 1', 120000, 100000, 29, 'assets/Admin/upload67451b405ec3f.jpg', '2024-11-25 17:50:08', '2024-11-25 18:58:47'),
-(38, 'Giay 2', 1, '12', 120000, 100000, 29, 'assets/Admin/upload67451f8f5fe5d.jpg', '2024-11-25 18:08:31', '2024-11-25 18:08:31'),
-(39, 'Giay 3', 4, '                                                hello world                                            ', 120000, 100000, 29, 'assets/Admin/upload67452e8adbe17.png', '2024-11-25 19:12:26', '2024-11-27 10:58:27'),
-(40, 'Giày 11', 1, '123', 100000, 99000, 0, 'assets/Admin/upload6747c83062785.jpg', '2024-11-27 18:32:32', '2024-11-27 18:32:32'),
-(41, 'hello', 1, '                                                123                                            ', 30000, 25000, 122, 'assets/Admin/upload67487da95b064.jpg', '2024-11-28 07:26:49', '2024-11-28 07:28:36'),
-(42, 'js', 1, '12', 50000, 100000, 12, '', '2024-11-28 07:39:22', '2024-11-28 07:39:22'),
-(43, 'Giày sneaker', 1, '', 260000, 240000, 12, '', '2024-11-28 07:51:51', '2024-11-28 07:51:51'),
-(44, 'Giay 3', 1, '1231', 100000, 80000, 12, NULL, '2024-11-29 00:58:24', '2024-11-29 00:58:24');
+(36, 'Nike', 6, '                                                Giày số 1                                            ', 750000, 350000, 29, 'assets/Admin/upload674edc5924db8.jpg', '2024-11-25 17:50:08', '2024-12-03 03:24:25'),
+(38, 'Nike', 10, '                                                                                                                                                                                                                                              Giày số 1                                                                                                                                                                                                       ', 800000, 350000, 29, 'assets/Admin/upload674edd1286094.jpg', '2024-11-25 18:08:31', '2024-12-03 03:27:58'),
+(39, 'Nike', 8, '                                                                                          Giày số 1                                                                                  ', 620000, 400000, 29, 'assets/Admin/upload674edd5c73540.jpg', '2024-11-25 19:12:26', '2024-12-03 03:28:44'),
+(40, 'Jodan', 13, '                                                                                                                            Giày số 1                                                                                                                        ', 750000, 39000, 19, 'assets/Admin/upload674edf2ba906c.jpg', '2024-11-27 18:32:32', '2024-12-03 03:36:27'),
+(41, 'Nike', 8, '                                                                                                                                                Giày số 1                                                                                                                               ', 750000, 450000, 122, 'assets/Admin/upload674edf67013c5.jpg', '2024-11-28 07:26:49', '2024-12-03 03:37:27'),
+(42, 'Nike', 1, '                                                Giày số 1                            ', 70000, 500000, 12, 'assets/Admin/upload674edf94387fb.jpg', '2024-11-28 07:39:22', '2024-12-03 03:38:12'),
+(43, 'Jodan', 15, '                                                                                                                                            Giày số 1                                            ', 660000, 340000, 12, 'assets/Admin/upload674ee0515ed7f.jpg', '2024-11-28 07:51:51', '2024-12-03 03:41:36'),
+(44, 'Jodan', 11, '                                         Giày số 1                        ', 800000, 580000, 12, 'assets/Admin/upload674ee08ceba19.jpg', '2024-11-29 00:58:24', '2024-12-03 03:42:20'),
+(45, 'Jodan', 4, 'Giày số 1', 750000, 350000, 19, 'assets/Admin/upload674ee134a0220.jpg', '2024-12-03 03:45:08', '2024-12-03 03:45:08'),
+(46, 'Jodan', 4, 'Giày số 1', 850000, 450000, 19, 'assets/Admin/upload674ee17ca29b2.jpg', '2024-12-03 03:46:20', '2024-12-03 03:46:20'),
+(47, 'Jodan', 1, 'Giày số 1', 650000, 550000, 19, 'assets/Admin/upload674ee1b2e69fa.jpg', '2024-12-03 03:47:14', '2024-12-03 03:47:14'),
+(48, 'Jodan', 1, 'Giày số 1', 730000, 560000, 19, 'assets/Admin/upload674ee1f556ca9.jpg', '2024-12-03 03:48:21', '2024-12-03 03:48:21');
 
 -- --------------------------------------------------------
 
@@ -437,7 +451,7 @@ ALTER TABLE `cart_detail`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -455,7 +469,7 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `product_comment`
