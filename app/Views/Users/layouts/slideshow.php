@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/slider/fashion-slideshow-01.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/fashion-slideshow-01.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>
@@ -18,7 +18,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/slider/fashion-slideshow-02.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/fashion-slideshow-02.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <h1 class="fade-item fade-item-1">Simple <br class="md-hidden">Style</h1>
@@ -32,7 +32,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/slider/fashion-slideshow-03.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/fashion-slideshow-03.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <h1 class="fade-item fade-item-1">Glamorous<br>Glam</h1>

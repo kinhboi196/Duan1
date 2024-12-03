@@ -77,8 +77,8 @@
                                                 <a href="<?= BASE_URL ?>?act=shop&category_id=<?= $value->id ?>"
                                                     class="collection-image img-style">
                                                     <img class="lazyload"
-                                                        data-src="assets/Users/images/collections/collection-17.jpg"
-                                                        src="assets/Users/images/collections/collection-17.jpg"
+                                                        data-src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/c1074564-5ea9-4632-8080-aca262c679d8/air-max-excee-shoes-kG4Tjc.png"
+                                                        src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/c1074564-5ea9-4632-8080-aca262c679d8/air-max-excee-shoes-kG4Tjc.png"
                                                         alt="collection-img">
                                                 </a>
                                                 <div class="collection-content">
@@ -162,16 +162,16 @@
         </section>
         <!-- /Seller -->
         <!-- Lookbook -->
-        <?php include 'app/Views/Users/layouts/lookbook.php' ?>
+        <!-- <?php include 'app/Views/Users/layouts/lookbook.php' ?> -->
         <!-- /Lookbook -->
         <!-- Testimonial -->
-        <?php include 'app/Views/Users/layouts/testimonial.php' ?>
+        <!-- <?php include 'app/Views/Users/layouts/testimonial.php' ?> -->
         <!-- /Testimonial -->
         <!-- brand -->
-        <?php include 'app/Views/Users/layouts/brand.php' ?>
+        <!-- <?php include 'app/Views/Users/layouts/brand.php' ?> -->
         <!-- /brand -->
         <!-- Shop Gram -->
-        <?php include 'app/Views/Users/layouts/shopGram.php' ?>
+        <!-- <?php include 'app/Views/Users/layouts/shopGram.php' ?> -->
         <!-- /Shop Gram -->
         <!-- Icon box -->
         <?php include 'app/Views/Users/layouts/iconBox.php' ?>

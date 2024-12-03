@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2024 at 10:49 AM
+-- Generation Time: Dec 03, 2024 at 01:14 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -115,16 +115,7 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Giày  Nike'),
 (4, 'Giày Jondan'),
-(6, 'Giày Nike Siêu Cấp'),
-(7, 'Giày  Nike Trắng'),
-(8, 'Giày  Nike Xanh'),
-(9, 'Giày  Nike Đen'),
-(10, 'Giày  Nike Vệt Đen'),
-(11, 'Giày  Nike Jodan'),
-(12, 'Giày  Nike Nâu'),
-(13, 'Giày  Nike JodanXanh'),
-(14, 'Giày  Nike JodanRed'),
-(15, 'Giày  Nike JodanCam');
+(6, 'Giày Nike Siêu Cấp');
 
 -- --------------------------------------------------------
 
@@ -188,18 +179,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category_id`, `description`, `price`, `price_sale`, `stock`, `image_main`, `created_at`, `updated_at`) VALUES
-(36, 'Nike', 6, '                                                Giày số 1                                            ', 750000, 350000, 29, 'assets/Admin/upload674edc5924db8.jpg', '2024-11-25 17:50:08', '2024-12-03 03:24:25'),
-(38, 'Nike', 10, '                                                                                                                                                                                                                                              Giày số 1                                                                                                                                                                                                       ', 800000, 350000, 29, 'assets/Admin/upload674edd1286094.jpg', '2024-11-25 18:08:31', '2024-12-03 03:27:58'),
-(39, 'Nike', 8, '                                                                                          Giày số 1                                                                                  ', 620000, 400000, 29, 'assets/Admin/upload674edd5c73540.jpg', '2024-11-25 19:12:26', '2024-12-03 03:28:44'),
-(40, 'Jodan', 13, '                                                                                                                            Giày số 1                                                                                                                        ', 750000, 39000, 19, 'assets/Admin/upload674edf2ba906c.jpg', '2024-11-27 18:32:32', '2024-12-03 03:36:27'),
-(41, 'Nike', 8, '                                                                                                                                                Giày số 1                                                                                                                               ', 750000, 450000, 122, 'assets/Admin/upload674edf67013c5.jpg', '2024-11-28 07:26:49', '2024-12-03 03:37:27'),
-(42, 'Nike', 1, '                                                Giày số 1                            ', 70000, 500000, 12, 'assets/Admin/upload674edf94387fb.jpg', '2024-11-28 07:39:22', '2024-12-03 03:38:12'),
-(43, 'Jodan', 15, '                                                                                                                                            Giày số 1                                            ', 660000, 340000, 12, 'assets/Admin/upload674ee0515ed7f.jpg', '2024-11-28 07:51:51', '2024-12-03 03:41:36'),
-(44, 'Jodan', 11, '                                         Giày số 1                        ', 800000, 580000, 12, 'assets/Admin/upload674ee08ceba19.jpg', '2024-11-29 00:58:24', '2024-12-03 03:42:20'),
-(45, 'Jodan', 4, 'Giày số 1', 750000, 350000, 19, 'assets/Admin/upload674ee134a0220.jpg', '2024-12-03 03:45:08', '2024-12-03 03:45:08'),
-(46, 'Jodan', 4, 'Giày số 1', 850000, 450000, 19, 'assets/Admin/upload674ee17ca29b2.jpg', '2024-12-03 03:46:20', '2024-12-03 03:46:20'),
-(47, 'Jodan', 1, 'Giày số 1', 650000, 550000, 19, 'assets/Admin/upload674ee1b2e69fa.jpg', '2024-12-03 03:47:14', '2024-12-03 03:47:14'),
-(48, 'Jodan', 1, 'Giày số 1', 730000, 560000, 19, 'assets/Admin/upload674ee1f556ca9.jpg', '2024-12-03 03:48:21', '2024-12-03 03:48:21');
+(36, 'Nike', 1, '                                                                                                Giày số 1                                                                                        ', 750000, 350000, 29, 'assets/Admin/upload674edc5924db8.jpg', '2024-11-25 17:50:08', '2024-12-03 04:43:36'),
+(38, 'Nike', 1, '                                                                                                                                                                                                                                                                                              Giày số 1                                                                                                                                                                                                                                                   ', 800000, 350000, 29, 'assets/Admin/upload674edd1286094.jpg', '2024-11-25 18:08:31', '2024-12-03 04:35:15'),
+(39, 'Nike', 6, '                                                                                                                                                                                          Giày số 1                                                                                                                                                                          ', 620000, 400000, 29, 'assets/Admin/upload674edd5c73540.jpg', '2024-11-25 19:12:26', '2024-12-03 04:40:33'),
+(40, 'Nike', 1, '                                                                                                                                                                                                                            Giày số 1                                                                                                                                                                                                                ', 750000, 39000, 19, 'assets/Admin/upload674ef0b6660af.jpg', '2024-11-27 18:32:32', '2024-12-03 04:51:18'),
+(41, 'Jodan', 4, '                                                                                                                                                                                                                                                Giày số 1                                                                                                                                                                                                                       ', 750000, 450000, 122, 'assets/Admin/upload674edf67013c5.jpg', '2024-11-28 07:26:49', '2024-12-03 04:39:48'),
+(42, 'Nike', 1, '                                                                                                                                                                                                                                                                                                                                                                                                                                                Giày số 1                                                                                                                                                                                                                                                                                                                                                                                            ', 700000, 500000, 12, 'assets/Admin/upload674ef091e9e50.jpg', '2024-11-28 07:39:22', '2024-12-03 04:50:41'),
+(43, 'Jodan', 4, '                                                                                                                                                                                            Giày số 1                                                                                        ', 660000, 340000, 12, 'assets/Admin/upload674ee0515ed7f.jpg', '2024-11-28 07:51:51', '2024-12-03 04:39:11'),
+(44, 'Jodan', 4, '                                                                                         Giày số 1                                                                    ', 800000, 580000, 12, 'assets/Admin/upload674ee08ceba19.jpg', '2024-11-29 00:58:24', '2024-12-03 04:40:21'),
+(45, 'Nike', 6, '                                                Giày số 1                                            ', 750000, 350000, 19, 'assets/Admin/upload674ee134a0220.jpg', '2024-12-03 03:45:08', '2024-12-03 04:43:53'),
+(46, 'Nike', 6, '                                                Giày số 1                                            ', 850000, 450000, 19, 'assets/Admin/upload674ee17ca29b2.jpg', '2024-12-03 03:46:20', '2024-12-03 04:44:22'),
+(47, 'Jodan', 4, '                                                Giày số 1                                            ', 650000, 550000, 19, 'assets/Admin/upload674ee1b2e69fa.jpg', '2024-12-03 03:47:14', '2024-12-03 04:42:04'),
+(48, 'Nike', 6, '                                                                                                                                                Giày số 1                                                                                                                                    ', 730000, 560000, 19, 'assets/Admin/upload674ee1f556ca9.jpg', '2024-12-03 03:48:21', '2024-12-03 04:40:06');
 
 -- --------------------------------------------------------
 
@@ -587,4 +578,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTIOn */;
