@@ -103,7 +103,6 @@
                                                 <?= round(((intval($product->price) - intval($product->price_sale)) / intval($product->price)) * 100) ?>
                                             </span>% OFF
                                         </div>
-
                                     </div>
                                     <div class="product-status-content">
                                         <i class=" d-flex icon-lightning" id="status-trigger">
