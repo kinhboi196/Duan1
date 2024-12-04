@@ -65,6 +65,11 @@ if($role == "user"){
             $dashBoardController->writeComment();
             break;
         }
+        case 'add-to-cart': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->addToCart();
+            break;
+        }
     }
 }else{
 

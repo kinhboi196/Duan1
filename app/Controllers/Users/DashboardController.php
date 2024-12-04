@@ -222,4 +222,11 @@ class DashboardController
         }
         header("Location:" . BASE_URL . "?act=product-detail&product_id=" . $_POST['productId']);
     }
+
+    public function addToCart(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $cartModel = new CartUserModel();
+            $cartModel->addCartModel();
+        }
+    }
 }
