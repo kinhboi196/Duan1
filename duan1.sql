@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2024 at 01:14 PM
+-- Generation Time: Dec 03, 2024 at 11:57 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -213,7 +213,9 @@ CREATE TABLE `product_comment` (
 
 INSERT INTO `product_comment` (`id`, `product_id`, `user_id`, `comment`, `parent`, `created_at`) VALUES
 (3, 38, 21, 'Giày đẹp và sang', NULL, '2024-12-03 07:04:21'),
-(4, 38, 23, 'Cảm ơn bạn', 3, '2024-12-04 07:04:21');
+(4, 38, 23, 'Cảm ơn bạn', 3, '2024-12-04 07:04:21'),
+(10, 43, 21, 'ez', NULL, '2024-12-03 06:35:05'),
+(11, 38, 11, 'Cảm ơn bạn đã phản hồi', 3, '2024-12-03 16:13:37');
 
 -- --------------------------------------------------------
 
@@ -240,6 +242,13 @@ CREATE TABLE `product_rating` (
   `rating` tinyint DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_rating`
+--
+
+INSERT INTO `product_rating` (`id`, `product_id`, `user_id`, `rating`, `created_at`) VALUES
+(3, 43, 21, 5, '2024-12-03 06:34:58');
 
 -- --------------------------------------------------------
 
@@ -466,7 +475,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_comment`
 --
 ALTER TABLE `product_comment`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_image`
@@ -478,7 +487,7 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT for table `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_variants`
@@ -578,4 +587,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTIOn */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
