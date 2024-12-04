@@ -4,7 +4,7 @@ class LoginModel{
     public function __construct(){
         $this->db = new Database();
     }
-    public function checkLogin() {
+    public function checkUserLogin() {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $sql = "select * from users where email = :email and role = 2";

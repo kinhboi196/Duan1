@@ -22,7 +22,7 @@ if($role == "user"){
         }
         case 'logout': {
             $loginController = new LoginUserController();
-            $loginController->logout();
+            $loginController->userLogout();
             break;
         }
         case 'register': {

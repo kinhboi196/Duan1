@@ -40,7 +40,6 @@ class ProductUserModel
         $query = $this->db->pdo->query($sql);
         $result = $query->fetchAll();
         return $result;
-
     }
 
     public function getProductById()
@@ -170,7 +169,7 @@ class ProductUserModel
 
         $stmt->execute();
 
-        return $stmt->fetchAll(); 
+        return $stmt->fetchAll();
     }
 
     public function avgRating($productId)
@@ -179,7 +178,11 @@ class ProductUserModel
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":product_id", $productId);
         $stmt->execute();
-        return round($stmt->fetch()->avgRating, 2);
+        $rating = $stmt->fetch()->avgRating;
+        if ($rating !== null) {
+            return round($rating, 2);
+        }else{
+            return null;
+        }
     }
-
 }

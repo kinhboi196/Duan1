@@ -24,7 +24,7 @@ class LoginUserController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $loginModel = new LoginModel();
-            $dataUsers = $loginModel->checkLogin();
+            $dataUsers = $loginModel->checkUserLogin();
             if ($dataUsers) {
                 $_SESSION['users'] = [
                     'id' => $dataUsers->id,
@@ -41,7 +41,7 @@ class LoginUserController
         }
     }
 
-    public function logout()
+    public function userLogout()
     {
         if (isset($_SESSION['users'])) {
             unset($_SESSION['users']);
