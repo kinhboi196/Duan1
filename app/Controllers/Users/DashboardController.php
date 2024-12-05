@@ -226,7 +226,26 @@ class DashboardController
     public function addToCart(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cartModel = new CartUserModel();
-            $cartModel->addCartModel();
+            $data = $cartModel->addCartModel();
+            echo json_encode($data);
         }
+    }
+
+    public function showToCart(){
+        $cartModel = new CartUserModel();
+        $data = $cartModel->showCartModel();
+        echo json_encode($data);
+    }
+
+    public function updateToCart(){
+        $cartModel = new CartUserModel();
+        $data = $cartModel->updateCartModel();
+        echo json_encode($data);
+    }
+
+    public function shoppingCart(){
+        $cartModel = new CartUserModel();
+        $data = $cartModel->showCartModel();
+        include 'app/Views/Users/shopping-cart.php';
     }
 }

@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="header">
-                <div class="title fw-5">Shopping cart</div>
+                <div class="title fw-5">Shopping cart <span class="count_product"></span></div>
                 <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
             </div>
             <div class="wrap">
@@ -10,25 +10,7 @@
                     <div class="tf-mini-cart-main">
                         <div class="tf-mini-cart-sroll">
                             <div class="tf-mini-cart-items">
-                                <div class="tf-mini-cart-item">
-                                    <div class="tf-mini-cart-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/Users/images//products/white-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="tf-mini-cart-info">
-                                        <a class="title link" href="product-detail.html">T-shirt</a>
-                                        <div class="price fw-6">$25.00</div>
-                                        <div class="tf-mini-cart-btns">
-                                            <div class="wg-quantity small">
-                                                <span class="btn-quantity minus-btn">-</span>
-                                                <input type="text" name="number" value="1">
-                                                <span class="btn-quantity plus-btn">+</span>
-                                            </div>
-                                            <div class="tf-mini-cart-remove">Remove</div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -36,7 +18,7 @@
                         <div class="tf-mini-cart-bottom-wrap">
                             <div class="tf-cart-totals-discounts">
                                 <div class="tf-cart-total">Subtotal</div>
-                                <div class="tf-totals-total-value fw-6">$49.99 USD</div>
+                                <div class="tf-totals-total-value fw-6"></div>
                             </div>
                             <div class="tf-mini-cart-line"></div>
                             <div class="tf-cart-checkbox">
@@ -53,7 +35,7 @@
                                 </label>
                             </div>
                             <div class="tf-mini-cart-view-checkout">
-                                <a href="view-cart.html"
+                                <a href="<?= BASE_URL?>?act=shopping-cart"
                                     class="tf-btn btn-outline radius-3 link w-100 justify-content-center">View
                                     cart</a>
                                 <a href="checkout.html"
@@ -215,21 +197,102 @@
 </div>
 
 <script>
-    const exampleModal = document.getElementById('shoppingCart');
-    exampleModal.addEventListener('show.bs.modal', event => {
-        let productId = "<?= $_GET['product_id'] ?>";
-        let quantity = document.querySelector(".quantity-product").value;
+    // Bấm nút add
+    const btnAddToCart =document.querySelector(".btnAddToCart")
+    btnAddToCart.addEventListener("click", function(){
+        let productId = "<?= $_GET['product_id'] ?>"
+        let quantity = document.querySelector(".quantity-product").value
+
         let formData = new FormData();
         formData.append('productId', productId)
         formData.append('quantity', quantity)
 
+
         fetch('<?= BASE_URL ?>?act=add-to-cart', {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                showCart(data)
+            })
+
+            var myModal = new bootstrap.Modal(document.getElementById('shoppingCart'));
+            myModal.show();
+
+    })
+    const exampleModal = document.getElementById('shoppingCart')
+    exampleModal.addEventListener('show.bs.modal', event => {
+
+        fetch('<?= BASE_URL ?>?act=show-to-cart')
+            .then(response => response.json())
+            .then(data => {
+                showCart(data)
+            })
+    });
+
+    // Bấm show cart
+    function showCart(data){
+        $(".count_product").text(`(${data.length})`)
+        $(".tf-mini-cart-items").empty();
+
+        let UI = ''
+        let tong = 0
+        data.forEach(item => {
+            UI += `
+                <div class="tf-mini-cart-item">
+                    <div class="tf-mini-cart-image">
+                        <a href="<?= BASE_URL ?>?act=product-detail&product_id=${item.product_id}">
+                            <img src="${item.image_main}" alt="">
+                        </a>
+                    </div>
+                    <div class="tf-mini-cart-info">
+                        <a class="title link" href="<?= BASE_URL ?>?act=product-detail&product_id=${item.product_id}">
+                            ${item.name}
+                        </a>
+                        <div class="price fw-6">
+                            ${item.price_sale != null ? item.price_sale.toLocaleString() : item.price.toLocaleString()} VNĐ
+                        </div>
+                        <div class="tf-mini-cart-btns">
+                            <div class="wg-quantity small">
+                                <span class="btn-quantity minus-btn" onclick="handleUpdate('${item.id}', 'decrease')">-</span>
+                                <input type="text" name="number" value="${item.quantity}">
+                                <span class="btn-quantity plus-btn" onclick="handleUpdate('${item.id}', 'increase')">+</span>
+                            </div>
+                            <div class="tf-mini-cart-remove" onclick="handleUpdate('${item.id}', 'deleted')">Remove</div>
+                        </div>
+                    </div>
+                </div>
+            `
+            let price = item.price_sale != null ? Number(item.price_sale) : Number(item.price)
+            let quantity = Number(item.quantity)
+            tong = tong + (price * quantity)
+        })
+        $(".tf-mini-cart-items").append(UI)
+        $(".tf-totals-total-value").empty();
+        $(".tf-totals-total-value").text(tong.toLocaleString() + " VNĐ")
+    }
+
+    function handleUpdate(cartDetailId, action){
+        if(action == "deleted"){
+            let check = confirm("Bạn có muốn xóa không?")
+            if(!check){
+                return
+            }
+        }
+        let formData = new FormData();
+
+        formData.append('cart_detail_id', cartDetailId)
+        formData.append('action', action)
+
+        fetch('<?= BASE_URL ?>?act=update-cart', {
             method: "POST",
             body: formData
         })
-        .then(response => response.json())
+            .then(response => response.json())
             .then(data => {
-                console.log(data);
+                showCart(data)
             })
-    });
+
+    }
 </script>

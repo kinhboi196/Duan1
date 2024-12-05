@@ -96,8 +96,12 @@
                                     </div>
                                     <div class="tf-product-info-price">
                                         <h5>Giá bán:</h5>
-                                        <div class="price-on-sale"><?= number_format($product->price_sale) ?> VND</div>
-                                        <div class="compare-at-price"><?= number_format($product->price) ?> VND</div>
+                                        <?php if($product->price_sale == null) : ?>
+                                            <div class="price-on-sale"><?= number_format($product->price_sale) ?> VNĐ</div>
+                                            <?php else: ?>
+                                        <div class="price-on-sale"><?= number_format($product->price_sale) ?> VNĐ</div>
+                                        <div class="compare-at-price"><?= number_format($product->price) ?> VNĐ</div>
+                                        <?php endif; ?>
                                         <div class="badges-on-sale">
                                             <span>
                                                 <?= round(((intval($product->price) - intval($product->price_sale)) / intval($product->price)) * 100) ?>
@@ -122,7 +126,7 @@
                                             <a href="javascript:void(0);"
                                                 class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn
                                                     <?php if(isset($_SESSION['users'])): ?>
-                                                        btn-add-to-cart
+                                                        btnAddToCart
                                                     <?php endif; ?>"
 
                                                     <?php if(!isset($_SESSION['users'])): ?>
