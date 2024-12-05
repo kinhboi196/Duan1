@@ -23,8 +23,7 @@
                             <div class="tf-mini-cart-line"></div>
                             <div class="tf-cart-checkbox">
                                 <div class="tf-checkbox-wrapp">
-                                    <input class="" type="checkbox" id="CartDrawer-Form_agree"
-                                        name="agree_checkbox">
+                                    <input class="" type="checkbox" id="CartDrawer-Form_agree" name="agree_checkbox">
                                     <div>
                                         <i class="icon-check"></i>
                                     </div>
@@ -35,7 +34,7 @@
                                 </label>
                             </div>
                             <div class="tf-mini-cart-view-checkout">
-                                <a href="<?= BASE_URL?>?act=shopping-cart"
+                                <a href="<?= BASE_URL ?>?act=shopping-cart"
                                     class="tf-btn btn-outline radius-3 link w-100 justify-content-center">View
                                     cart</a>
                                 <a href="checkout.html"
@@ -49,8 +48,8 @@
                         <div class="tf-mini-cart-tool-content">
                             <label for="Cart-note" class="tf-mini-cart-tool-text">
                                 <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18"
-                                        viewBox="0 0 16 18" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18"
+                                        fill="currentColor">
                                         <path
                                             d="M5.12187 16.4582H2.78952C2.02045 16.4582 1.39476 15.8325 1.39476 15.0634V2.78952C1.39476 2.02045 2.02045 1.39476 2.78952 1.39476H11.3634C12.1325 1.39476 12.7582 2.02045 12.7582 2.78952V7.07841C12.7582 7.46357 13.0704 7.77579 13.4556 7.77579C13.8407 7.77579 14.1529 7.46357 14.1529 7.07841V2.78952C14.1529 1.25138 12.9016 0 11.3634 0H2.78952C1.25138 0 0 1.25138 0 2.78952V15.0634C0 16.6015 1.25138 17.8529 2.78952 17.8529H5.12187C5.50703 17.8529 5.81925 17.5407 5.81925 17.1555C5.81925 16.7704 5.50703 16.4582 5.12187 16.4582Z">
                                         </path>
@@ -63,8 +62,7 @@
                             </label>
                             <textarea name="note" id="Cart-note" placeholder="How can we help you?"></textarea>
                             <div class="tf-cart-tool-btns justify-content-center">
-                                <div
-                                    class="tf-mini-cart-tool-primary text-center w-100 fw-6 tf-mini-cart-tool-close">
+                                <div class="tf-mini-cart-tool-primary text-center w-100 fw-6 tf-mini-cart-tool-close">
                                     Close</div>
                             </div>
                         </div>
@@ -104,8 +102,8 @@
                         <div class="tf-mini-cart-tool-content">
                             <div class="tf-mini-cart-tool-text">
                                 <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15"
-                                        viewBox="0 0 21 15" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15" viewBox="0 0 21 15"
+                                        fill="currentColor">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M0.441406 1.13155C0.441406 0.782753 0.724159 0.5 1.07295 0.5H12.4408C12.7896 0.5 13.0724 0.782753 13.0724 1.13155V2.91575H16.7859C18.8157 2.91575 20.5581 4.43473 20.5581 6.42296V11.8878C20.5581 12.2366 20.2753 12.5193 19.9265 12.5193H18.7542C18.4967 13.6534 17.4823 14.5 16.2703 14.5C15.0582 14.5 14.0439 13.6534 13.7864 12.5193H7.20445C6.94692 13.6534 5.93259 14.5 4.72054 14.5C3.50849 14.5 2.49417 13.6534 2.23664 12.5193H1.07295C0.724159 12.5193 0.441406 12.2366 0.441406 11.8878V1.13155ZM2.26988 11.2562C2.57292 10.1881 3.55537 9.40578 4.72054 9.40578C5.88572 9.40578 6.86817 10.1881 7.17121 11.2562H11.8093V1.76309H1.7045V11.2562H2.26988ZM13.0724 4.17884V6.68916H19.295V6.42296C19.295 5.2348 18.2252 4.17884 16.7859 4.17884H13.0724ZM19.295 7.95226H13.0724V11.2562H13.8196C14.1227 10.1881 15.1051 9.40578 16.2703 9.40578C17.4355 9.40578 18.4179 10.1881 18.7209 11.2562H19.295V7.95226ZM4.72054 10.6689C4.0114 10.6689 3.43652 11.2437 3.43652 11.9529C3.43652 12.662 4.0114 13.2369 4.72054 13.2369C5.42969 13.2369 6.00456 12.662 6.00456 11.9529C6.00456 11.2437 5.42969 10.6689 4.72054 10.6689ZM16.2703 10.6689C15.5611 10.6689 14.9863 11.2437 14.9863 11.9529C14.9863 12.662 15.5611 13.2369 16.2703 13.2369C16.9794 13.2369 17.5543 12.662 17.5543 11.9529C17.5543 11.2437 16.9794 10.6689 16.2703 10.6689Z">
                                         </path>
@@ -184,8 +182,7 @@
                             <div class="tf-cart-tool-btns">
                                 <a href="#"
                                     class="tf-btn fw-6 justify-content-center btn-fill w-100 animate-hover-btn radius-3"><span>Estimate</span></a>
-                                <div
-                                    class="tf-mini-cart-tool-primary text-center fw-6 w-100 tf-mini-cart-tool-close">
+                                <div class="tf-mini-cart-tool-primary text-center fw-6 w-100 tf-mini-cart-tool-close">
                                     Cancel</div>
                             </div>
                         </div>
@@ -198,8 +195,8 @@
 
 <script>
     // Bấm nút add
-    const btnAddToCart =document.querySelector(".btnAddToCart")
-    btnAddToCart.addEventListener("click", function(){
+    const btnAddToCart = document.querySelector(".btnAddToCart")
+    btnAddToCart.addEventListener("click", function () {
         let productId = "<?= $_GET['product_id'] ?>"
         let quantity = document.querySelector(".quantity-product").value
 
@@ -209,16 +206,16 @@
 
 
         fetch('<?= BASE_URL ?>?act=add-to-cart', {
-                method: "POST",
-                body: formData
-            })
+            method: "POST",
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 showCart(data)
             })
 
-            var myModal = new bootstrap.Modal(document.getElementById('shoppingCart'));
-            myModal.show();
+        var myModal = new bootstrap.Modal(document.getElementById('shoppingCart'));
+        myModal.show();
 
     })
     const exampleModal = document.getElementById('shoppingCart')
@@ -232,7 +229,7 @@
     });
 
     // Bấm show cart
-    function showCart(data){
+    function showCart(data) {
         $(".count_product").text(`(${data.length})`)
         $(".tf-mini-cart-items").empty();
 
@@ -273,10 +270,10 @@
         $(".tf-totals-total-value").text(tong.toLocaleString() + " VNĐ")
     }
 
-    function handleUpdate(cartDetailId, action){
-        if(action == "deleted"){
+    function handleUpdate(cartDetailId, action) {
+        if (action == "deleted") {
             let check = confirm("Bạn có muốn xóa không?")
-            if(!check){
+            if (!check) {
                 return
             }
         }
@@ -293,6 +290,5 @@
             .then(data => {
                 showCart(data)
             })
-
     }
 </script>

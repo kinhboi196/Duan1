@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2024 at 11:57 PM
+-- Generation Time: Dec 05, 2024 at 10:25 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -81,7 +81,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, '2024-11-13 04:03:53', '2024-11-13 04:03:53'),
-(2, 2, '2024-11-13 04:03:53', '2024-11-13 04:03:53');
+(2, 2, '2024-11-13 04:03:53', '2024-11-13 04:03:53'),
+(3, 21, '2024-12-04 03:42:37', '2024-12-04 03:42:37');
 
 -- --------------------------------------------------------
 
@@ -96,6 +97,14 @@ CREATE TABLE `cart_detail` (
   `quantity` int DEFAULT '1',
   `product_variants_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Dumping data for table `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `quantity`, `product_variants_id`) VALUES
+(4, 3, 41, 9, NULL),
+(5, 3, 39, 11, NULL);
 
 -- --------------------------------------------------------
 
@@ -439,13 +448,13 @@ ALTER TABLE `attribute_value`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`
