@@ -144,22 +144,44 @@
                                                                     <?php if ($value->status == "pending"): ?>
                                                                     selected
                                                                     <?php endif; ?>
-                                                                    value="pending">Chờ xử lí</option>
+                                                                    value="pending">Chờ xử lí
+                                                                </option>
                                                                 <option
                                                                     <?php if ($value->status == "completed"): ?>
                                                                     selected
                                                                     <?php endif; ?>
-                                                                    value="completed">Đã hoàn thành</option>
-                                                                <option
-                                                                    <?php if ($value->status == "canceled"): ?>
-                                                                    selected
-                                                                    <?php endif; ?>
-                                                                    value="canceled">Đã hủy</option>
+                                                                    value="completed">Đã hoàn thành
+                                                                </option>
                                                                 <option
                                                                     <?php if ($value->status == "processing"): ?>
                                                                     selected
                                                                     <?php endif; ?>
-                                                                    value="processing">Đang xử lý</option>
+                                                                    value="processing">Đang xử lý
+                                                                </option>
+                                                                <option
+                                                                    <?php if ($value->status == "refunded"): ?>
+                                                                    selected
+                                                                    <?php endif; ?>
+                                                                    value="refunded">Hoàn tiền
+                                                                </option>
+                                                                <option
+                                                                    <?php if ($value->status == "shipped"): ?>
+                                                                    selected
+                                                                    <?php endif; ?>
+                                                                    value="shipped">đã giao hàng
+                                                                </option>
+                                                                <option
+                                                                    <?php if ($value->status == "returned"): ?>
+                                                                    selected
+                                                                    <?php endif; ?>
+                                                                    value="returned">đã trả hàng
+                                                                </option>
+                                                                <option
+                                                                    <?php if ($value->status == "canceled"): ?>
+                                                                    selected
+                                                                    <?php endif; ?>
+                                                                    value="canceled">Đã hủy
+                                                                </option>
                                                             </select>
                                                             </form>
                                                         </div>
