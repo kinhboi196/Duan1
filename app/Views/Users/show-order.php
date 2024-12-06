@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gizom Home - Giỏ hàng</title>
+    <title>Gizom Home - Đơn Hàng</title>
 
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -51,194 +51,57 @@
         <!-- page-title -->
         <div class="tf-page-title style-2">
             <div class="container-full">
-                <div class="heading text-center">Giỏ hàng</div>
+                <div class="heading text-center">Đơn Hàng</div>
             </div>
         </div>
         <!-- /page-title -->
-
+       
         <section class="flat-spacing-11">
             <div class="container">
-                <div class="tf-page-cart-wrap">
-                    <div class="tf-page-cart-item">
-                        <form>
-                            <table class="tf-table-page-cart">
-                                <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php if (count($data) > 0): ?>
-                                        <?php foreach ($data as $key => $value): ?>
-                                            <tr class="tf-cart-item file-delete">
-                                                <td class="tf-cart-item_product">
-                                                    <a href="<?= BASE_URL ?>?act=product-detail&product_id=<?= $value->product_id ?>"
-                                                        class="img-box">
-                                                        <img src="<?= $value->image_main ?>" alt="img-product">
-                                                    </a>
-                                                    <div class="cart-info">
-                                                        <a href="<?= BASE_URL ?>?act=product-detail&product_id=<?= $value->product_id ?>"
-                                                            class="cart-title link"><?= $value->name ?></a>
-                                                        <span class="remove-cart" onclick="handleUpdate('<?= $value->id ?>', 'deleted')">Remove</span>
-                                                    </div>
-                                                </td>
-                                                <td class="tf-cart-item_price" cart-data-title="Price">
-                                                    <div class="cart-price">
-                                                        <?php if ($value->price_sale == null) {
-                                                            echo number_format($value->price) . " VNĐ";
-                                                        } else {
-                                                            echo number_format($value->price_sale) . " VNĐ";
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                </td>
-                                                <td class="tf-cart-item_quantity" cart-data-title="Quantity">
-                                                    <div class="cart-quantity">
-                                                        <div class="wg-quantity">
-                                                            <span class="btn-quantity"
-                                                                onclick="handleUpdate('<?= $value->id ?>', 'decrease')">
-                                                                <svg class="d-inline-block" width="9" height="1"
-                                                                    viewBox="0 0 9 1" fill="currentColor">
-                                                                    <path
-                                                                        d="M9 1H5.14286H3.85714H0V1.50201e-05H3.85714L5.14286 0L9 1.50201e-05V1Z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                            <input type="text" name="number" value="<?= $value->quantity ?>">
-                                                            <span class="btn-quantity"
-                                                                onclick="handleUpdate('<?= $value->id ?>', 'increase')">
-                                                                <svg class="d-inline-block" width="9" height="9"
-                                                                    viewBox="0 0 9 9" fill="currentColor">
-                                                                    <path
-                                                                        d="M9 5.14286H5.14286V9H3.85714V5.14286H0V3.85714H3.85714V0H5.14286V3.85714H9V5.14286Z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="tf-cart-item_total" cart-data-title="Total">
-                                                    <div class="cart-total">
-                                                        <?php
-                                                        if ($value->price_sale != null) {
-                                                            $total = intval($value->price_sale) * intval($value->quantity);
-                                                            echo number_format($total) . " VNĐ";
-                                                        } else {
-                                                            $total = intval($value->price) * intval($value->quantity);
-                                                            echo number_format($total) . " VNĐ";
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="4">Không có sản phẩm</td>
-                                        </tr>
-                                    <?php endif; ?>
-                                </tbody>
-
-                            </table>
-                            <div class="tf-page-cart-note">
-                                <label for="cart-note">Add Order Note</label>
-                                <textarea name="note" id="cart-note" placeholder="How can we help you?"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tf-page-cart-footer">
-                        <div class="tf-cart-footer-inner">
-
-                        <?php if (!empty($data)): ?>
-    <div class="tf-page-cart-checkout">
-
-        <div class="cart-checkbox">
-            <input type="checkbox" class="tf-check" id="cart-gift-checkbox">
-            <label for="cart-gift-checkbox" class="fw-4">
-                <span>Do you want a gift wrap?</span> Only <span class="fw-5">$5.00</span>
-            </label>
-        </div>
-        <div class="tf-cart-totals-discounts">
-            <h3>Subtotal</h3>
-            <span class="total-value">
-                <?php
-                $total = 0;
-                foreach ($data as $key => $value) {
-                    if ($value->price_sale != null) {
-                        $total = $total + (intval($value->price_sale) * intval($value->quantity));
-                    } else {
-                        $total = $total + (intval($value->price) * intval($value->quantity));
-                    }
-                }
-                echo number_format($total) . " VNĐ";
-                ?>
-            </span>
-        </div>
-        <p class="tf-cart-tax">
-            Taxes and <a href="shipping-delivery.html">shipping</a> calculated at checkout
-        </p>
-        <div class="cart-checkbox">
-            <input type="checkbox" class="tf-check" id="check-agree">
-            <label for="check-agree" class="fw-4">
-                I agree with the <a href="terms-conditions.html">terms and conditions</a>
-            </label>
-        </div>
-        <div class="cart-checkout-btn">
-            <a href="#" id="link-check-out"
-                class="tf-btn w-100 btn-fill animate-hover-btn radius-3 justify-content-center">
-                <span>Check out</span>
-            </a>
-        </div>
-        <div class="tf-page-cart_imgtrust">
-            <p class="text-center fw-6">Guarantee Safe Checkout</p>
-            <div class="cart-list-social">
-                <div class="payment-item">
-                    <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img"
-                        width="38" height="24" aria-labelledby="pi-visa">
-                        <title id="pi-visa">Visa</title>
-                        <path opacity=".07"
-                            d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
-                        </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
-                        </path>
-                        <path
-                            d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
-                            fill="#142688"></path>
-                    </svg>
-                </div>
-                <div class="payment-item">
-                    <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38"
-                        height="24" role="img" aria-labelledby="pi-paypal">
-                        <title id="pi-paypal">PayPal</title>
-                        <path opacity=".07"
-                            d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
-                        </path>
-                        <path fill="#fff"
-                            d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32">
-                        </path>
-                        <path fill="#003087"
-                            d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z">
-                        </path>
-                        <path fill="#3086C8"
-                            d="M23.9 8.3l-.2.2c-.5 2.8-2.2 3.8-4.6 3.8H18c-.3 0-.5.2-.6.5l-.6 3.9-.2 1c0 .2.1.4.3.4H19c.2 0 .3-.1.4-.3l1.2-6.8c.1-.3-.1-.7-.5-.7h-.9c-.5 0-.9-.2-1.2-.5-.5-.7-.1-1.4.6-1.8.9-.4 2-.2 2.7.3-.1-.1-.1 0-.2 0z">
-                        </path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
-
-                        </div>
-                    </div>
-                </div>
+                <table class="tf-table-page-cart">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <?php foreach($orders as $key => $value): ?>
+                        <tr>
+                            <td class="text-center"><?= $key + 1 ?></td>
+                            <td class="text-center"><?= $value->name ?></td>
+                            <td class="text-center"><?= $value->phone ?></td>
+                            <td class="text-center"><?= $value->address ?></td>
+                            <td class="text-center"><?= number_format($value->total) ?>VNĐ</td>
+                            <td class="text-center">
+                                <?php if ($value->status == 'pending'): ?>
+                                <span class="badge text-bg-primary">Chờ xử lí</span>
+                            <?php elseif ($value->status == 'completed'): ?>
+                                <span class="badge text-bg-success">Hoàn thành</span>
+                            <?php elseif ($value->status == 'canceled'): ?>
+                                <span class="badge text-bg-danger">Đã hủy</span>
+                            <?php elseif ($value->status == 'processing'): ?>
+                                <span class="badge text-bg-info">Đang xử lý</span>
+                            <?php endif; ?>
+                                
+                            </td>
+                            <td class="text-end">
+                                <a href="<?= BASE_URL ?>?act=show-order-detail&order_id=<?= $value->id ?>" 
+                                class="btn btn-success">Chi Tiết Đơn</a>
+                            <?php if($value->status == 'pending'): ?>
+                                <a href="<?= BASE_URL ?>?act=cancel-order&order_id=<?= $value->id ?>" 
+                                class="btn btn-danger" onclick="return confirm('Bạn có muốn hủy đơn o!')">Hủy Đơn</a>
+                            <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                </table>
             </div>
         </section>
-
 
         <!-- Footer -->
         <footer id="footer" class="footer md-pb-70">
@@ -2344,120 +2207,9 @@
     <script type="text/javascript" src="assets/Users/js/multiple-modal.js"></script>
     <script type="text/javascript" src="assets/Users/js/main.js"></script>
 
-    <script>
-    function handleUpdate(cart_detail_id, action) {
-        if (action == "deleted") {
-            let check = confirm("Bạn có muốn xóa không?");
-            if (!check) {
-                return;
-            }
-        }
+    
 
-        let formData = new FormData();
-        formData.append('cart_detail_id', cart_detail_id);
-        formData.append('action', action);
-
-        fetch('<?= BASE_URL ?>?act=update-cart', {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (action === 'deleted') {
-                    // Xóa sản phẩm khỏi giao diện ngay lập tức
-                    $(`.tf-cart-item[data-id="${cart_detail_id}"]`).remove();
-
-                    // Kiểm tra lại giỏ hàng, nếu rỗng thì ẩn khối tf-page-cart-checkout
-                    if (data.length === 0) {
-                        $(".tf-page-cart-checkout").hide();
-                    }
-                }
-
-                // Cập nhật lại giỏ hàng
-                updateCart(data);
-            });
-    }
-
-    function updateCart(data) {
-        $(".tf-table-page-cart tbody").empty(); // Xóa tất cả nội dung trong tbody
-        let totalMoney = 0;
-        if (data.length > 0) {
-            data.forEach(item => {
-                let UI = `
-                <tr class="tf-cart-item file-delete" data-id="${item.id}">
-                    <td class="tf-cart-item_product">
-                        <a href="<?= BASE_URL ?>?act=product-detail&product_id=${item.product_id}"
-                            class="img-box">
-                            <img src="${item.image_main}" alt="img-product">
-                        </a>
-                        <div class="cart-info">
-                            <a href="<?= BASE_URL ?>?act=product-detail&product_id=${item.product_id}"
-                                class="cart-title link">${item.name}</a>
-                            <span class="remove-cart" onclick="handleUpdate('${item.id}', 'deleted')">Remove</span>
-                        </div>
-                    </td>
-                    <td class="tf-cart-item_price" cart-data-title="Price">
-                        <div class="cart-price">
-                            ${item.price_sale != null ? item.price_sale.toLocaleString() : item.price.toLocaleString()} VNĐ
-                        </div>
-                    </td>
-                    <td class="tf-cart-item_quantity" cart-data-title="Quantity">
-                        <div class="cart-quantity">
-                            <div class="wg-quantity">
-                                <span class="btn-quantity"
-                                    onclick="handleUpdate('${item.id}', 'decrease')">
-                                    <svg class="d-inline-block" width="9" height="1"
-                                        viewBox="0 0 9 1" fill="currentColor">
-                                        <path
-                                            d="M9 1H5.14286H3.85714H0V1.50201e-05H3.85714L5.14286 0L9 1.50201e-05V1Z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <input type="text" name="number" value="${item.quantity}">
-                                <span class="btn-quantity"
-                                    onclick="handleUpdate('${item.id}', 'increase')">
-                                    <svg class="d-inline-block" width="9" height="9"
-                                        viewBox="0 0 9 9" fill="currentColor">
-                                        <path
-                                            d="M9 5.14286H5.14286V9H3.85714V5.14286H0V3.85714H3.85714V0H5.14286V3.85714H9V5.14286Z">
-                                        </path>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="tf-cart-item_total" cart-data-title="Total">
-                        <div class="cart-total">
-                            ${item.price_sale != null ? (Number(item.price_sale) * Number(item.quantity)).toLocaleString() :
-                                (Number(item.price) * Number(item.quantity)).toLocaleString()} VNĐ 
-                        </div>
-                    </td>
-                </tr>
-                `;
-                $(".tf-table-page-cart tbody").append(UI); // Append từng hàng
-                if (item.price_sale != null) {
-                    totalMoney += (item.price_sale * item.quantity);
-                } else {
-                    totalMoney += (item.price * item.quantity);
-                }
-            });
-            $(".total-value").text(totalMoney.toLocaleString() + " VNĐ");
-        } else {
-            $(".tf-table-page-cart tbody").append('<tr><td colspan="4">Không có sản phẩm</td></tr>');
-        }
-    }
-
-    $("#link-check-out").click(function(event) {
-        event.preventDefault();
-        if ($("#check-agree").is(":checked")) {
-            window.location.replace("<?= BASE_URL ?>?act=check-out");
-        } else {
-            alert("Vui lòng chấp nhận điều khoản!");
-        }
-    });
-</script>
-
-
+   
 </body>
 
 

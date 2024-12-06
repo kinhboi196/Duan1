@@ -23,7 +23,7 @@
                             <div class="tf-mini-cart-line"></div>
                             <div class="tf-cart-checkbox">
                                 <div class="tf-checkbox-wrapp">
-                                    <input class="" type="checkbox" id="CartDrawer-Form_agree" name="agree_checkbox">
+                                    <input type="checkbox" id="CartDrawer-Form_agree" name="agree_checkbox">
                                     <div>
                                         <i class="icon-check"></i>
                                     </div>
@@ -37,7 +37,7 @@
                                 <a href="<?= BASE_URL ?>?act=shopping-cart"
                                     class="tf-btn btn-outline radius-3 link w-100 justify-content-center">View
                                     cart</a>
-                                <a href="checkout.html"
+                                <a id="checkoutBtn"
                                     class="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"><span>Check
                                         out</span></a>
                             </div>
@@ -196,7 +196,7 @@
 <script>
     // Bấm nút add
     const btnAddToCart = document.querySelector(".btnAddToCart")
-    btnAddToCart.addEventListener("click", function () {
+    btnAddToCart.addEventListener("click", function() {
         let productId = "<?= $_GET['product_id'] ?>"
         let quantity = document.querySelector(".quantity-product").value
 
@@ -206,9 +206,9 @@
 
 
         fetch('<?= BASE_URL ?>?act=add-to-cart', {
-            method: "POST",
-            body: formData
-        })
+                method: "POST",
+                body: formData
+            })
             .then(response => response.json())
             .then(data => {
                 showCart(data)
@@ -283,12 +283,34 @@
         formData.append('action', action)
 
         fetch('<?= BASE_URL ?>?act=update-cart', {
-            method: "POST",
-            body: formData
-        })
+                method: "POST",
+                body: formData
+            })
             .then(response => response.json())
             .then(data => {
                 showCart(data)
             })
     }
+
+    document.getElementById('checkoutBtn').addEventListener('click', function(event) {
+        const agreeCheckbox = document.getElementById('CartDrawer-Form_agree');
+
+        if (!agreeCheckbox.checked) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+            alert('Vui lòng chấp nhận điều khoản trước khi tiếp tục.');
+        } else {
+            // Chuyển hướng tới link checkout
+            window.location.href = '<?= BASE_URL ?>?act=check-out';
+        }
+    });
+
+
+    $("#link-check-out").click(function(event) {
+        event.preventDefault();
+        if ($("#check-agree").is(":checked")) {
+
+        } else {
+            alert("Vui lòng điền đúng điều khoản!")
+        }
+    })
 </script>

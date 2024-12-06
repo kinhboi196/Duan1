@@ -248,4 +248,51 @@ class DashboardController
         $data = $cartModel->showCartModel();
         include 'app/Views/Users/shopping-cart.php';
     }
+
+    public function checkout()
+    {
+        $userModel = new UserModel2();
+        $currentUser = $userModel->getCurrentUser();
+
+        $cartModel = new CartUserModel();
+        $products = $cartModel->showCartModel();
+        include 'app/Views/Users/check-out.php';
+    }
+
+
+    public function submitCheckout()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $cartModel = new CartUserModel();
+        $products = $cartModel->showCartModel();
+
+
+        $orderModel = new OrderUserModel();
+        $addOrder = $orderModel->order($products);
+        if($addOrder){
+            $cartModel->deleteCartDetail();
+
+            header("Location:" . BASE_URL);
+        }
+        }
+}
+
+ public function showOrder(){
+    $orderModel = new OrderUserModel();
+    $orders = $orderModel->getAllOrder();
+    include 'app/Views/Users/show-order.php';
+ }
+
+
+ public function showOrderDetail(){
+    $orderModel = new OrderUserModel();
+    $order_detail = $orderModel->getOrderDetail();
+    include 'app/Views/Users/show-order-detail.php';
+ }
+
+ public function cancelOrder(){
+    $orderModel = new OrderUserModel();
+    $orderModel->cancelOrderModel();
+    header("Location: ". BASE_URL . "?act=show-order" );
+ }
 }

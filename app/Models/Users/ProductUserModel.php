@@ -63,7 +63,6 @@ class ProductUserModel
             $sql = "SELECT image_main FROM products WHERE id = :id";
             $stmt = $this->db->pdo->prepare($sql);
             $stmt->bindParam(':id', $_GET['product_id']);
-
             $stmt->execute();
             $result = $stmt->fetchAll();
             return $result;

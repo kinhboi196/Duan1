@@ -1610,7 +1610,7 @@
                                 <li><a href="timeline.html" class="sub-nav-link line-clamp">Timeline<div
                                             class="demo-label"><span class="demo-new">New</span></div></a></li>
                                 <li><a href="view-cart.html" class="sub-nav-link line-clamp">View cart</a></li>
-                                <li><a href="checkout.html" class="sub-nav-link line-clamp">Check out</a></li>
+                                <li><a href="<?= BASE_URL ?>?act=" class="sub-nav-link line-clamp">Check out</a></li>
                                 <li><a href="payment-confirmation.html" class="sub-nav-link line-clamp">Payment
                                         Confirmation</a></li>
                                 <li><a href="payment-failure.html" class="sub-nav-link line-clamp">Payment Failure</a>
@@ -2011,7 +2011,7 @@
                 </div>
                 <div class="tf-login-form">
                     <form class="" action="https://themesflat.co/html/ecomus/my-account.html" accept-charset="utf-8">
-                        <div class="tf-field style-1">
+                        <div class="tf-field style-1"> 
                             <input class="tf-field-input tf-input" placeholder=" " type="email" name="">
                             <label class="tf-field-label" for="">Email *</label>
                         </div>

@@ -125,4 +125,23 @@ class CartUserModel
         }
         return $this->showCartModel();
     }
+
+    public function deleteCartDetail()
+    {
+        $userId = $_SESSION['users']['id'];
+        $sql= "SELECT * FROM `cart` WHERE user_id = :user_id";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":user_id",  $userId );
+        $stmt->execute();
+        $cart = $stmt->fetch();
+        if($cart){
+            $sql = "DELETE FROM `cart_detail` WHERE cart_id= :cart_id";
+            $stmt = $this->db->pdo->prepare($sql);
+            $stmt->bindParam(":cart_id",  $cart->id );
+        return  $stmt->execute();
+        }
+        return false;
+
+
+    }
 }
