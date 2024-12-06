@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2024 at 10:25 AM
+-- Generation Time: Dec 06, 2024 at 11:57 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -82,7 +82,9 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, '2024-11-13 04:03:53', '2024-11-13 04:03:53'),
 (2, 2, '2024-11-13 04:03:53', '2024-11-13 04:03:53'),
-(3, 21, '2024-12-04 03:42:37', '2024-12-04 03:42:37');
+(3, 21, '2024-12-04 03:42:37', '2024-12-04 03:42:37'),
+(5, 27, '2024-12-05 10:31:07', '2024-12-05 10:31:07'),
+(6, 28, '2024-12-05 22:32:15', '2024-12-05 22:32:15');
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,8 @@ CREATE TABLE `cart_detail` (
 
 INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `quantity`, `product_variants_id`) VALUES
 (4, 3, 41, 9, NULL),
-(5, 3, 39, 11, NULL);
+(5, 3, 39, 11, NULL),
+(51, 6, 39, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,19 +138,31 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 CREATE TABLE `order` (
   `id` int NOT NULL,
   `user_id` int NOT NULL,
-  `status` enum('pending','completed','canceled') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT 'pending',
+  `status` enum('pending','completed','canceled','processing','onhold','confirmed','shipped','delivered','refunded','failed','returned','partial','awaitingpayment') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT 'pending',
   `total` decimal(10,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `name` varchar(100) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `address` varchar(500) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `phone` varchar(20) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `notes` varchar(100) COLLATE utf8mb3_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`id`, `user_id`, `status`, `total`, `created_at`, `updated_at`) VALUES
-(1, 1, 'completed', '550000.00', '2024-11-13 04:04:09', '2024-11-13 04:04:09'),
-(2, 2, 'pending', '150000.00', '2024-11-13 04:04:09', '2024-11-13 04:04:09');
+INSERT INTO `order` (`id`, `user_id`, `status`, `total`, `created_at`, `updated_at`, `name`, `address`, `phone`, `email`, `notes`) VALUES
+(13, 27, 'canceled', '2250000.00', '2024-12-05 07:31:47', '2024-12-05 18:43:52', 'Luu minh duc', '', '', 'minhduc23052005', ''),
+(14, 27, 'canceled', '1539000.00', '2024-12-05 07:42:55', '2024-12-05 18:46:17', 'Luu minh duc', '', '', 'minhduc23052005', ''),
+(15, 27, 'canceled', '350000.00', '2024-12-05 10:59:28', '2024-12-05 18:50:09', 'Luu minh duc', 'hanoi', '344643575', 'minhduc23052005', ''),
+(16, 27, 'canceled', '580000.00', '2024-12-05 11:03:14', '2024-12-05 18:50:24', 'Luu minh duc', '', '', 'minhduc23052005', ''),
+(17, 28, 'processing', '340000.00', '2024-12-05 22:32:39', '2024-12-06 10:00:15', 'Luu minh duc', '', '', 'minhduc23', ''),
+(18, 28, 'canceled', '350000.00', '2024-12-05 22:40:14', '2024-12-06 05:40:52', 'Luu minh duc', '', '', 'minhduc23', ''),
+(19, 28, 'canceled', '680000.00', '2024-12-05 22:43:43', '2024-12-06 05:44:10', 'Luu minh duc', '', '', 'minhduc23', ''),
+(20, 28, 'completed', '350000.00', '2024-12-06 02:08:02', '2024-12-06 09:40:17', 'Luu minh duc', '', '', 'minhduc23', ''),
+(21, 28, 'completed', '350000.00', '2024-12-06 02:09:41', '2024-12-06 09:38:53', 'Luu minh duc', '', '', 'minhduc23', '');
 
 -- --------------------------------------------------------
 
@@ -163,6 +178,23 @@ CREATE TABLE `order_detail` (
   `price` int NOT NULL,
   `product_variants_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`, `product_variants_id`) VALUES
+(32, 13, 41, 5, 450000, NULL),
+(33, 14, 39, 2, 400000, NULL),
+(34, 14, 40, 1, 39000, NULL),
+(35, 14, 38, 2, 350000, NULL),
+(36, 15, 38, 1, 350000, NULL),
+(37, 16, 44, 1, 580000, NULL),
+(38, 17, 43, 1, 340000, NULL),
+(39, 18, 36, 1, 350000, NULL),
+(40, 19, 43, 2, 340000, NULL),
+(41, 20, 36, 1, 350000, NULL),
+(42, 21, 36, 1, 350000, NULL);
 
 -- --------------------------------------------------------
 
@@ -319,7 +351,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `ima
 (23, 'Lưu Minh Đức', 'gizom', '$2y$10$U7h4VNuewG2I1tSnfdy5Ouwmrkb.1bOB/eFBz62S/M1AZkNIDGPdq', 'Hà Nội', '123123', 'assets/Admin/upload/67465e37c635f.jpg', '2024-11-26 16:47:33', '2024-12-03 00:41:25', '1'),
 (24, 'Phạm Hoài Nam', 'n@gmail.com', '$2y$10$uhIYCICE2MzufBfwc04qIubJcIyvG9rFuf2NmIP1BJkG577Uq2QkC', NULL, NULL, NULL, '2024-11-26 17:12:30', '2024-11-26 17:12:30', '2'),
 (25, 'Áo thun', '123', '$2y$10$hXVKE/Q7a0Ie.WX1KVvhQuRG1Nh6CWz3BMOZBtBNhN1ex8NBv.0yK', NULL, NULL, NULL, '2024-11-26 17:49:10', '2024-11-26 17:49:10', '2'),
-(26, 'Áo thun', '1111', '$2y$10$jH4O1Fe4ikjXhHEwOubwXOdGAIJG87PcdaHf3HrqRFGDVimeCKVzC', '123', '123', 'assets/Users/upload/6746fd4785426.jpg', '2024-11-27 04:06:26', '2024-11-27 04:06:47', '2');
+(26, 'Áo thun', '1111', '$2y$10$jH4O1Fe4ikjXhHEwOubwXOdGAIJG87PcdaHf3HrqRFGDVimeCKVzC', '123', '123', 'assets/Users/upload/6746fd4785426.jpg', '2024-11-27 04:06:26', '2024-11-27 04:06:47', '2'),
+(27, 'Luu minh duc', 'minhduc23052005', '$2y$10$8R7GcsJ8Ki.ky2Oledw3QOJ70OIG9EdBasQhdWzvy2qVCDNLjXu/u', '', '', '', '2024-12-05 03:30:04', '2024-12-05 03:31:00', '2'),
+(28, 'Luu minh duc', 'minhduc23', '$2y$10$N05V0CAdCa0M5qLAcs0Gd.T0TVKxfMJJSO6wT2vnMW.GWyB.Jof/C', NULL, NULL, NULL, '2024-12-05 22:31:52', '2024-12-05 22:31:52', '2');
 
 --
 -- Indexes for dumped tables
@@ -448,13 +482,13 @@ ALTER TABLE `attribute_value`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -466,13 +500,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -514,7 +548,7 @@ ALTER TABLE `product_variant_attribute`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
