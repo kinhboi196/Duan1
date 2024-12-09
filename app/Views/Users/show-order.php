@@ -55,7 +55,7 @@
             </div>
         </div>
         <!-- /page-title -->
-       
+
         <section class="flat-spacing-11">
             <div class="container">
                 <table class="tf-table-page-cart">
@@ -70,7 +70,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <?php foreach($orders as $key => $value): ?>
+                    <?php foreach ($orders as $key => $value): ?>
                         <tr>
                             <td class="text-center"><?= $key + 1 ?></td>
                             <td class="text-center"><?= $value->name ?></td>
@@ -79,26 +79,32 @@
                             <td class="text-center"><?= number_format($value->total) ?>VNĐ</td>
                             <td class="text-center">
                                 <?php if ($value->status == 'pending'): ?>
-                                <span class="badge text-bg-primary">Chờ xử lí</span>
-                            <?php elseif ($value->status == 'completed'): ?>
-                                <span class="badge text-bg-success">Hoàn thành</span>
-                            <?php elseif ($value->status == 'canceled'): ?>
-                                <span class="badge text-bg-danger">Đã hủy</span>
-                            <?php elseif ($value->status == 'processing'): ?>
-                                <span class="badge text-bg-info">Đang xử lý</span>
-                            <?php endif; ?>
-                                
+                                    <span class="badge text-bg-primary">Chờ xử lí</span>
+                                <?php elseif ($value->status == 'completed'): ?>
+                                    <span class="badge text-bg-success">Đã Hoàn thành</span>
+                                <?php elseif ($value->status == 'refunded'): ?>
+                                    <span class="badge text-bg-success">Đã Hoàn tiền</span>
+                                <?php elseif ($value->status == 'processing'): ?>
+                                    <span class="badge text-bg-info">Đang xử lý</span>
+                                <?php elseif ($value->status == 'returned'): ?>
+                                    <span class="badge text-bg-warning">Đã trả hàng</span>
+                                <?php elseif ($value->status == 'shipped'): ?>
+                                    <span class="badge text-bg-success">Đã giao hàng</span>
+                                <?php elseif ($value->status == 'canceled'): ?>
+                                    <span class="badge text-bg-danger">Đã hủy</span>
+                                <?php endif; ?>
+
                             </td>
                             <td class="text-end">
-                                <a href="<?= BASE_URL ?>?act=show-order-detail&order_id=<?= $value->id ?>" 
-                                class="btn btn-success">Chi Tiết Đơn</a>
-                            <?php if($value->status == 'pending'): ?>
-                                <a href="<?= BASE_URL ?>?act=cancel-order&order_id=<?= $value->id ?>" 
-                                class="btn btn-danger" onclick="return confirm('Bạn có muốn hủy đơn o!')">Hủy Đơn</a>
-                            <?php endif; ?>
+                                <a href="<?= BASE_URL ?>?act=show-order-detail&order_id=<?= $value->id ?>"
+                                    class="btn btn-success">Chi Tiết Đơn</a>
+                                <?php if ($value->status == 'pending'): ?>
+                                    <a href="<?= BASE_URL ?>?act=cancel-order&order_id=<?= $value->id ?>" class="btn btn-danger"
+                                        onclick="return confirm('Bạn có muốn hủy đơn o!')">Hủy Đơn</a>
+                                <?php endif; ?>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </section>
@@ -2207,9 +2213,9 @@
     <script type="text/javascript" src="assets/Users/js/multiple-modal.js"></script>
     <script type="text/javascript" src="assets/Users/js/main.js"></script>
 
-    
 
-   
+
+
 </body>
 
 
