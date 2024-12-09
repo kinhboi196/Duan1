@@ -386,10 +386,10 @@
                                                             <div class="title">
                                                                 <a href="#" class="body-text"><?= $value->name ?></a>
                                                             </div>
-                                                            <div class="price text-tiny"><?= $value->price_sale ?></div>
+                                                            <div class="price text-tiny">Giá gốc: <?= $value->price ?></div>
                                                         </div>
                                                     </div>
-                                                    <div class="sale body-text">952 Sales</div>
+                                                    <div class="sale body-text">Sales: <?= $value->price_sale ?></div>
                                                 </li>
                                             </ul>
                                             <?php endforeach ?>

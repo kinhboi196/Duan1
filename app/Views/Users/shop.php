@@ -51,11 +51,11 @@
                     if (isset($category)) {
                         echo $category->name;
                     } else {
-                        echo 'New Arrival';
+                        echo 'Trang sản phẩm';
                     }
                     ?>
                 </div>
-                <p class="text-center text-2 text_black-2 mt_5">Shop through our latest selection of Fashion</p>
+                <p class="text-center text-2 text_black-2 mt_5">Các sản phẩm tốt nhất của chúng tôi</p>
             </div>
         </div>
         <!-- /page-title -->
